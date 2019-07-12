@@ -60,11 +60,12 @@ class CoffeeCup{
         return $this->volume;
         }
 
-	public function sip($myCoffee){
-		if( $myCoffee < $this->quantity ){
+	public function sip(int $myCoffee){
+		if( $myCoffee < 0 ){
 			$this->quantity=0;
-		echo 'You sipe '.$myCoffee.' cl, left '.$this->quantity.' cl of coffee'.'<br>';
+		echo 'You sipe '.$myCoffee.' cl, left '.$this->quantity .' cl of coffee'.'<br>';
 		}else {
+			$this->quantity -= $myCoffee;
 			echo 'Quantity :'.$this->quantity. '<br>';			
 		}
 		
@@ -85,18 +86,31 @@ class CoffeeCup{
 		echo 'brand :'.$this->brand.'<br>';
 		echo 'temperature :'. $this->temperature.'<br>';
 	}
+
+	public function displayInfos()
+    {
+        return strtoupper($this->getColor());
+    }
 }
 
-$myCoffee = new CoffeeCup(50,'hakunamatata',10);
+
+
+ $myCoffee = new CoffeeCup(50,'hakunamatata',10);
+
 //$myCoffee->setQuantity(20);
 //$myCoffee->setBrand('Malongo');
 //$myCoffee->setTemperature(65);
-$myCoffee->sip(2);
+$myCoffee->sip(5);
 $myCoffee->refill();
 $myCoffee->setVolume(50);
-
 $myCoffee->reHeat(7);
 $myCoffee->coolDown(10);
+
+while($myCoffee->getQuantity() > 0) { // While there is coffee in my cup
+	$quantityToSip = rand(1, 6);
+	$myCoffee->sip($quantityToSip);
+	$myCoffee->coolDown(1.5); // Cup loose 1.5 °C on each sip
+}
 
 /*
 	Part 2 :
