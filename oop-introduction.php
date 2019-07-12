@@ -98,7 +98,8 @@ class Car
 }
 $myCar= new Car('red' , 'ferrari');
 echo $myCar;
-/*  
+
+/* 
     Good practices:
     -One class = One file
     -Capital letter for the first letter and for the other words
