@@ -29,6 +29,18 @@
   Use Example :
  */
 
+ class HtmlString{
+     private $string;
+  
+
+     function getString(){
+         return $this->string;
+     }
+     function setString($string){
+         $this->string=$string;
+     }
+ }
+
 require_once 'inc/HtmlString.php';
 
 $markup = new HtmlString();

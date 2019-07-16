@@ -20,7 +20,8 @@
 	$myCoffee->setTemperature(65);
 */
 
-class CoffeeCup{
+class CoffeeCup
+{
 	private $quantity;
 	private $brand;
 	private $temperature;
@@ -30,72 +31,80 @@ class CoffeeCup{
 	$this->quantity = $quantity;
 	}
 	*/
-	public function setVolume($volume){
-	$this->quantity = $volume;
+	public function setVolume($volume)
+	{
+		$this->quantity = $volume;
 	}
-/*
+	/*
 	public function setBrand ( $brand){
 		$this->brand = $brand;
 		}
 		*/
-	public function reHeat($reHeat){
-	$this->reHeat = $reHeat;
+	public function reHeat($reHeat)
+	{
+		$this->reHeat = $reHeat;
 	}
-	public function coolDown($coolDown){
-	$this->coolDown = $coolDown;
+	public function coolDown($coolDown)
+	{
+		$this->coolDown = $coolDown;
 	}
 
-	public function getQuantity(){
+	public function getQuantity()
+	{
 		return $this->quantity;
 	}
-	
-	public function getBrand(){
+
+	public function getBrand()
+	{
 		return $this->brand;
 	}
-	public function getTemperature(){
+	public function getTemperature()
+	{
 		return $this->temperature;
-    }
-    
-    public function getVolume(){
-        return $this->volume;
-        }
+	}
 
-	public function sip(int $myCoffee){
-		if( $myCoffee < 0 ){
-			$this->quantity=0;
-		echo 'You sipe '.$myCoffee.' cl, left '.$this->quantity .' cl of coffee'.'<br>';
-		}else {
-			$this->quantity -= $myCoffee;
-			echo 'Quantity :'.$this->quantity. '<br>';			
+	public function getVolume()
+	{
+		return $this->volume;
+	}
+
+	public function sip(int $integer)
+	{
+		if ($this->quantity < $integer) {
+			$this->quantity = 0;
+			echo 'You sipe ' . $integer . ' cl, left ' . $this->quantity . ' cl of coffee' . '<br>';
+		} else {
+			$this->quantity -= $integer;
+			echo 'Quantity :' . $this->quantity . '<br>';
 		}
-		
-    }
-    
-    public function refill(){
-		$this->quantity = $this->getVolume();
-        echo "Mug full again".'<br>';
-    }
+	}
 
-    public function __construct($volume , $brand , $temperature )
-    {
-		$this->volume=$volume;
-		echo 'Volume :'.$this->volume .'<br>';
-		$this->quantity=$volume;
-		$this->brand= $brand;
+	public function refill()
+	{
+		$this->quantity = $this->getVolume();
+		echo "Mug full again" . '<br>';
+	}
+
+	public function __construct($volume, $brand, $temperature)
+	{
+		$this->volume = $volume;
+		echo 'Volume :' . $this->volume . '<br>';
+		$this->quantity = $volume;
+		$this->brand = $brand;
 		$this->temperature = $temperature;
-		echo 'brand :'.$this->brand.'<br>';
-		echo 'temperature :'. $this->temperature.'<br>';
+		echo 'brand :' . $this->brand . '<br>';
+		echo 'temperature :' . $this->temperature . '<br>';
 	}
 
 	public function displayInfos()
-    {
-        return strtoupper($this->getColor());
-    }
+	{
+		return strtoupper($this->getColor());
+	}
 }
 
 
 
- $myCoffee = new CoffeeCup(50,'hakunamatata',10);
+$myCoffee = new CoffeeCup(50, 'hakunamatata', 10);
 
 //$myCoffee->setQuantity(20);
 //$myCoffee->setBrand('Malongo');
@@ -106,7 +115,7 @@ $myCoffee->setVolume(50);
 $myCoffee->reHeat(7);
 $myCoffee->coolDown(10);
 
-while($myCoffee->getQuantity() > 0) { // While there is coffee in my cup
+while ($myCoffee->getQuantity() > 0) { // While there is coffee in my cup
 	$quantityToSip = rand(1, 6);
 	$myCoffee->sip($quantityToSip);
 	$myCoffee->coolDown(1.5); // Cup loose 1.5 °C on each sip
